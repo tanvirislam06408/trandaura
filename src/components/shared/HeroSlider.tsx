@@ -16,17 +16,17 @@ export default function HeroSlider() {
       <style>{`
         /* ── Pagination dots ── */
         .hero-swiper .swiper-pagination-bullet {
-          width: 8px; height: 8px;
-          background: rgba(255,255,255,0.35);
+          width: 10px; height: 10px;
+          background: rgba(255,255,255,0.4);
           opacity: 1;
           transition: all 0.3s ease;
         }
         .hero-swiper .swiper-pagination-bullet-active {
-          width: 28px;
-          border-radius: 4px;
-          background: #22c55e;
+          width: 32px;
+          border-radius: 5px;
+          background: linear-gradient(135deg, #22c55e, #16A34A);
         }
-        .hero-swiper .swiper-pagination { bottom: 24px; }
+        .hero-swiper .swiper-pagination { bottom: 28px; }
         .hero-swiper { width: 100%; }
 
         /* ── Hide inactive slides so they don't bleed through ── */
@@ -42,44 +42,54 @@ export default function HeroSlider() {
         /* ── Float animations (used per slide) ── */
         @keyframes float1 {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50%       { transform: translateY(-18px) rotate(2deg); }
+          50%       { transform: translateY(-20px) rotate(3deg); }
         }
         @keyframes float2 {
-          0%, 100% { transform: translateY(0px) rotate(-1deg); }
-          50%       { transform: translateY(-22px) rotate(1.5deg); }
+          0%, 100% { transform: translateY(0px) rotate(-2deg); }
+          50%       { transform: translateY(-25px) rotate(2deg); }
         }
         @keyframes float3 {
           0%, 100% { transform: translateY(0px) scale(1); }
-          50%       { transform: translateY(-15px) scale(1.03); }
+          50%       { transform: translateY(-18px) scale(1.05); }
+        }
+        @keyframes float4 {
+          0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+          50%       { transform: translateY(-12px) rotate(-3deg) scale(1.02); }
         }
         .animate-float-1 { animation: float1 5s   ease-in-out infinite; }
         .animate-float-2 { animation: float2 6s   ease-in-out infinite; }
         .animate-float-3 { animation: float3 4.5s ease-in-out infinite; }
+        .animate-float-4 { animation: float4 5.5s ease-in-out infinite; }
 
         /* ── Text stagger-in per slide ── */
         @keyframes slideUp {
-          from { opacity: 0; transform: translateY(30px); }
+          from { opacity: 0; transform: translateY(25px); }
           to   { opacity: 1; transform: translateY(0);    }
         }
-        .slide-text-badge { animation: slideUp 0.55s          ease forwards; }
-        .slide-text-title { animation: slideUp 0.65s 0.10s    ease forwards; opacity: 0; }
-        .slide-text-sub   { animation: slideUp 0.65s 0.20s    ease forwards; opacity: 0; }
-        .slide-text-cta   { animation: slideUp 0.65s 0.30s    ease forwards; opacity: 0; }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        .slide-text-badge { animation: slideUp 0.5s ease forwards; }
+        .slide-text-title { animation: slideUp 0.6s 0.1s ease forwards; opacity: 0; }
+        .slide-text-sub   { animation: slideUp 0.6s 0.2s ease forwards; opacity: 0; }
+        .slide-text-cta   { animation: slideUp 0.6s 0.3s ease forwards; opacity: 0; }
+        .slide-illustration { animation: fadeIn 0.8s 0.4s ease forwards; opacity: 0; }
       `}</style>
 
-      <section className="w-full overflow-hidden ">
+      <section className="w-full overflow-hidden">
         <Swiper
           className="hero-swiper"
           modules={[Autoplay, Pagination, EffectFade]}
           effect="fade"
           slidesPerView={1}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          autoplay={{ delay: 6000, disableOnInteraction: false }}
           pagination={{ clickable: true }}
           loop
         >
           <SwiperSlide><SlideShoppingLayout /></SwiperSlide>
           <SwiperSlide><SlideDealsLayout /></SwiperSlide>
-          {/* <SwiperSlide><SlideDeliveryLayout /></SwiperSlide> */}
+          <SwiperSlide><SlideDeliveryLayout /></SwiperSlide>
         </Swiper>
       </section>
     </>

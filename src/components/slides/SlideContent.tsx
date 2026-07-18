@@ -95,7 +95,7 @@ export default function SlideContent({
 
       {/* ── Illustration column (optional) ── */}
       {illustration && (
-        <div className={`flex flex-1 items-center justify-center ${floatClass ?? ""}`}>
+        <div className={`slide-illustration flex flex-1 items-center justify-center ${floatClass ?? ""}`}>
           {illustration}
         </div>
       )}
