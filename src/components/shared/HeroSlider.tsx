@@ -39,28 +39,6 @@ export default function HeroSlider() {
           visibility: visible;
         }
 
-        /* ── Float animations (used per slide) ── */
-        @keyframes float1 {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50%       { transform: translateY(-20px) rotate(3deg); }
-        }
-        @keyframes float2 {
-          0%, 100% { transform: translateY(0px) rotate(-2deg); }
-          50%       { transform: translateY(-25px) rotate(2deg); }
-        }
-        @keyframes float3 {
-          0%, 100% { transform: translateY(0px) scale(1); }
-          50%       { transform: translateY(-18px) scale(1.05); }
-        }
-        @keyframes float4 {
-          0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
-          50%       { transform: translateY(-12px) rotate(-3deg) scale(1.02); }
-        }
-        .animate-float-1 { animation: float1 5s   ease-in-out infinite; }
-        .animate-float-2 { animation: float2 6s   ease-in-out infinite; }
-        .animate-float-3 { animation: float3 4.5s ease-in-out infinite; }
-        .animate-float-4 { animation: float4 5.5s ease-in-out infinite; }
-
         /* ── Text stagger-in per slide ── */
         @keyframes slideUp {
           from { opacity: 0; transform: translateY(25px); }

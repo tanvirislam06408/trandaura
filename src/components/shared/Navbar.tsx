@@ -4,7 +4,7 @@ import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FiMenu, FiX, FiShoppingCart, FiSearch } from "react-icons/fi";
+import { FiMenu, FiX, FiShoppingCart } from "react-icons/fi";
 import { BadgeCheckIcon, LogOutIcon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DropdownMenuAvatar } from "./UserDropDown";
@@ -98,10 +98,8 @@ export default function Navbar() {
 
         {/* Actions */}
         <div className="hidden md:flex items-center gap-2">
-          {/* Search Button */}
-          <button className="relative rounded-full p-2.5 text-gray-500 transition-colors hover:bg-green-50 hover:text-green-600">
-            <FiSearch size={18} />
-          </button>
+          
+          
 
           {/* Cart */}
           <Link
