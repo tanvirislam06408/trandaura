@@ -19,6 +19,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "TrandAura - Fresh & Organic Fruits",
   description: "Discover the freshest fruits delivered right to your door with TrandAura.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

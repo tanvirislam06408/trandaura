@@ -21,7 +21,7 @@ const categories = [
     description: "Strawberries, blueberries, raspberries.",
     href: "/categories/Berries",
     image:
-      "https://images.unsplash.com/photo-1590494578508-348270dfbf70?w=600&q=80",
+      "https://images.unsplash.com/photo-1577069861033-55d04cec4ef5?w=800",
   },
   {
     title: "Seasonal",
