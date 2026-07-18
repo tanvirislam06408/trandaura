@@ -3,14 +3,14 @@ export interface Product {
   fruitName: string;
   shortDescription: string;
   description: string;
+  category: string;
+  imageUrl: string;
   price: number;
   unit: string;
-  origin: string;
   season: string;
+  origin: string;
   stockQuantity: number;
   nutritionInfo: string;
-  category: string;
   featured?: boolean;
-  imageUrl: string;
+  rating?: number;
 }
-

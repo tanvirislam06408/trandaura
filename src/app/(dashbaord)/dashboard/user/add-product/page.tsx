@@ -23,14 +23,13 @@ export default function AddProductPage() {
   const [formData, setFormData] = useState({
     fruitName: "",
     shortDescription: "",
-    description: "",
+    fullDescription: "",
     price: "",
     unit: "kg",
     category: "Tropical",
     season: "Summer",
     origin: "",
     stockQuantity: "",
-    nutritionInfo: "",
     featured: false,
     imageUrl: "",
   });
@@ -61,7 +60,7 @@ export default function AddProductPage() {
     const newErrors: Record<string, string> = {};
     if (!formData.fruitName.trim()) newErrors.fruitName = "Fruit name is required";
     if (!formData.shortDescription.trim()) newErrors.shortDescription = "Short description is required";
-    if (!formData.description.trim()) newErrors.description = "Full description is required";
+    if (!formData.fullDescription.trim()) newErrors.fullDescription = "Full description is required";
     if (!formData.price || Number(formData.price) <= 0) newErrors.price = "Enter a valid positive price";
     if (!formData.origin.trim()) newErrors.origin = "Origin is required";
     if (!formData.stockQuantity || Number(formData.stockQuantity) < 0) newErrors.stockQuantity = "Enter valid stock quantity";
@@ -81,16 +80,21 @@ export default function AddProductPage() {
       const newProduct = {
         fruitName: formData.fruitName,
         shortDescription: formData.shortDescription,
-        description: formData.description,
+        description: formData.fullDescription,
         price: Number(formData.price),
         unit: formData.unit,
         category: formData.category,
         season: formData.season,
         origin: formData.origin,
         stockQuantity: Number(formData.stockQuantity),
-        nutritionInfo: formData.nutritionInfo,
         featured: formData.featured,
         imageUrl: formData.imageUrl,
+        rating: 4.5,
+        location: formData.origin,
+        duration: "",
+        availableDate: "",
+        nutritionInfo: "",
+        image: formData.imageUrl,
       };
       const result = await addProduct(newProduct);
       console.log(result);
@@ -108,14 +112,13 @@ export default function AddProductPage() {
     setFormData({
       fruitName: "",
       shortDescription: "",
-      description: "",
+      fullDescription: "",
       price: "",
       unit: "kg",
       category: "Tropical",
       season: "Summer",
       origin: "",
       stockQuantity: "",
-      nutritionInfo: "",
       featured: false,
       imageUrl: "",
     });
@@ -130,13 +133,13 @@ export default function AddProductPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 pb-5">
         <div className="space-y-1">
           <Link
-            href="/dashboard/admin"
+            href="/dashboard/user"
             className="inline-flex items-center gap-1 text-xs font-semibold text-[#14B8A6] hover:text-[#0f9488] transition-colors mb-2"
           >
             <ArrowLeft size={14} /> Back to Dashboard
           </Link>
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Add New Fruit</h1>
-          <p className="text-gray-500 text-sm">List a fresh fruit product for the catalog.</p>
+          <p className="text-gray-500 text-sm">List a fresh fruit product for your customers.</p>
         </div>
       </div>
 
@@ -189,10 +192,10 @@ export default function AddProductPage() {
               Add Another Fruit
             </button>
             <Link
-              href="/dashboard/admin/products"
+              href="/explore"
               className="btn-outline w-full sm:w-auto flex items-center justify-center gap-2"
             >
-              <ShoppingBag size={16} /> View Products
+              <ShoppingBag size={16} /> View Catalog
             </Link>
           </div>
         </div>
@@ -246,19 +249,19 @@ export default function AddProductPage() {
 
                 {/* Full Description */}
                 <div className="space-y-1">
-                  <label htmlFor="description" className="text-xs font-semibold text-gray-500 uppercase tracking-wider block">
+                  <label htmlFor="fullDescription" className="text-xs font-semibold text-gray-500 uppercase tracking-wider block">
                     Full Description
                   </label>
                   <textarea
-                    id="description"
-                    name="description"
+                    id="fullDescription"
+                    name="fullDescription"
                     rows={5}
-                    value={formData.description}
+                    value={formData.fullDescription}
                     onChange={handleInputChange}
                     placeholder="Provide details about the fruit's taste, growing process, nutritional benefits, and ideal uses."
-                    className={`w-full rounded-xl border ${errors.description ? "border-red-400 bg-red-50/10" : "border-gray-200"} px-4 py-3 text-sm outline-none transition-all duration-200 focus:border-[#14B8A6] focus:ring-2 focus:ring-[#14B8A6]/10 resize-none`}
+                    className={`w-full rounded-xl border ${errors.fullDescription ? "border-red-400 bg-red-50/10" : "border-gray-200"} px-4 py-3 text-sm outline-none transition-all duration-200 focus:border-[#14B8A6] focus:ring-2 focus:ring-[#14B8A6]/10 resize-none`}
                   />
-                  {errors.description && <p className="text-xs text-red-500 font-medium">{errors.description}</p>}
+                  {errors.fullDescription && <p className="text-xs text-red-500 font-medium">{errors.fullDescription}</p>}
                 </div>
               </div>
             </div>
@@ -391,22 +394,6 @@ export default function AddProductPage() {
                   </div>
                   {errors.stockQuantity && <p className="text-xs text-red-500 font-medium">{errors.stockQuantity}</p>}
                 </div>
-
-                {/* Nutrition Info */}
-                <div className="space-y-1 md:col-span-2">
-                  <label htmlFor="nutritionInfo" className="text-xs font-semibold text-gray-500 uppercase tracking-wider block">
-                    Nutrition Info (optional)
-                  </label>
-                  <input
-                    type="text"
-                    id="nutritionInfo"
-                    name="nutritionInfo"
-                    value={formData.nutritionInfo}
-                    onChange={handleInputChange}
-                    placeholder="e.g. Rich in Vitamin C, Dietary Fiber"
-                    className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition-all duration-200 focus:border-[#14B8A6] focus:ring-2 focus:ring-[#14B8A6]/10"
-                  />
-                </div>
               </div>
             </div>
           </div>
@@ -490,7 +477,7 @@ export default function AddProductPage() {
                 </button>
 
                 <Link
-                  href="/dashboard/admin"
+                  href="/dashboard/user"
                   className="btn-outline w-full block text-center cursor-pointer"
                 >
                   Cancel

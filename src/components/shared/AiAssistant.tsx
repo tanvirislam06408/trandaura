@@ -15,8 +15,8 @@ export default function AiAssistant() {
     },
   ]);
   const [input, setInput] = useState("");
-  const messagesEndRef = useRef(null);
-  const inputRef = useRef(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // One-time attention tooltip, shown a couple seconds after first visit this session
   useEffect(() => {
@@ -52,7 +52,7 @@ export default function AiAssistant() {
     };
   }, [isOpen]);
 
-  async function sendMessage(text) {
+  async function sendMessage(text?: string) {
     const trimmed = (text ?? input).trim();
     if (!trimmed) return;
 

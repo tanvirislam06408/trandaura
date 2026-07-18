@@ -31,10 +31,10 @@ const CartBtn = ({ product, user }: CartBtnProps) => {
         }
         const data = await addToCart(pData)
         if(data.acknowledged){
-            toast.success(`${product.title} add to card successfully`)
+            toast.success(`${product.fruitName} added to cart successfully`)
         }
         else{
-            toast.error(`${product.title} already in cart`)
+            toast.error(`${product.fruitName} already in cart`)
         }
 
     }

@@ -35,6 +35,11 @@ const navItems = {
       path: "/dashboard/user/orders",
       icon: "ShoppingCart",
     },
+    {
+      name: "Add Products",
+      path: "/dashboard/user/add-product",
+      icon: "PlusCircle",
+    },
 
     {
       name: "Profile",
