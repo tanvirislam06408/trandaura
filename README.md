@@ -4,8 +4,8 @@ A modern, full-stack e-commerce platform for fresh and organic fruits, built wit
 
 ---
 
-<img width="1024" height="1536" alt="sum" src="https://github.com/user-attachments/assets/41444b4d-89f9-431c-887a-16c0b74ecaf9" />
-
+## Live Link : https://trandaura.vercel.app/
+<img width="1023" height="1537" alt="ChatGPT Image Jul 19, 2026, 11_25_43 AM" src="https://github.com/user-attachments/assets/096e0bf3-fc21-4aad-baf6-5c0db292c22f" />
 ## Features
 
 ### Storefront
