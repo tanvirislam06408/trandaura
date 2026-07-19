@@ -18,6 +18,7 @@ import {
   Apple,
 } from "lucide-react";
 import { addProduct } from "@/lib/actions/add-product";
+import { authClient } from "@/lib/auth-client";
 
 export default function AddProductPage() {
   const [formData, setFormData] = useState({
@@ -42,6 +43,8 @@ export default function AddProductPage() {
   const categories = ["Tropical", "Citrus", "Berries", "Stone Fruits", "Exotic", "Organic", "Seasonal"];
   const units = ["kg", "piece", "dozen", "box", "bag"];
   const seasons = ["Summer", "Winter", "Spring", "Autumn", "All Season"];
+
+  const { data: session } = authClient.useSession()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -79,6 +82,7 @@ export default function AddProductPage() {
     try {
       const newProduct = {
         fruitName: formData.fruitName,
+        sellerId : session?.user.id,
         shortDescription: formData.shortDescription,
         description: formData.fullDescription,
         price: Number(formData.price),

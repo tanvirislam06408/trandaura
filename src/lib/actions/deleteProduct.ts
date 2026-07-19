@@ -7,5 +7,6 @@ export const deleteProduct = async (id : string) => {
     
     const result = await serverMutation(`/delete-products/${id}`, null, 'DELETE');
     revalidatePath('/dashboard/admin/products')
+    revalidatePath('/dashboard/user/products')
     return result;
 }
