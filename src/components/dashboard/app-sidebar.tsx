@@ -40,6 +40,11 @@ const navItems = {
       path: "/dashboard/user/add-product",
       icon: "PlusCircle",
     },
+    {
+      name: "Manage Products",
+      path: "/dashboard/admin/products",
+      icon: "Package",
+    },
 
     {
       name: "Profile",
