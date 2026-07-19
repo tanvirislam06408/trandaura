@@ -42,7 +42,7 @@ const navItems = {
     },
     {
       name: "Manage Products",
-      path: "/dashboard/admin/products",
+      path: "/dashboard/user/products",
       icon: "Package",
     },
 
